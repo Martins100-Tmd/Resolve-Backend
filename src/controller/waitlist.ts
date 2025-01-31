@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
 import UserModel from '../MODEL/users';
 
+
+
 const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 };
 
-export const CollectEmail = async (req: Request, res: Response) => {
+export const CollectDetails = async (req: Request, res: Response) => {
     try {
-        const { name, email } = req.body;
+        const { name, email, interest, phonenumber } = req.body;
 
         
         if (!name || typeof name !== 'string' || name.length < 3) {
@@ -40,6 +42,8 @@ export const CollectEmail = async (req: Request, res: Response) => {
             waitlistId: count,
             name: name.trim(),
             email: email.toLowerCase(),
+            interest: interest,
+            phonenumber: phonenumber,
             joinedAt: new Date()
         });
 
@@ -61,7 +65,11 @@ export const CollectEmail = async (req: Request, res: Response) => {
     }
 };
 
-export const GetAllEmail = async (req: Request, res: Response) => {
+
+
+
+
+export const GetAllDetails = async (req: Request, res: Response) => {
      try {
         
          const users = await UserModel.find()

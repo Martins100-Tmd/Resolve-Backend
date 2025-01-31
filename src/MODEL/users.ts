@@ -3,9 +3,11 @@ import { Schema, model } from "mongoose";
 
 interface users {
     _id?: ObjectId,
-    waitlistId: Number,
+    waitlistId?: Number,
     name: string,
     email: string,
+    interest: string,
+    phonenumber: number,
     joinedAt?: Date
 }
 
@@ -27,6 +29,15 @@ const userschema = new Schema<users>({
         lowercase: true,
         trim: true
     },
+    interest: {
+        type: String,
+        required: true,
+    },
+    phonenumber: {
+        type: Number,
+        required: true
+    },
+
     joinedAt: {
         type: Date,
         default: Date.now
