@@ -7,13 +7,13 @@ const validateEmail = (email: string): boolean => {
 };
 export const CollectDetails = async (req: Request, res: Response) => {
    try {
-      const { name, email, interest, phonenumber } = req.body;
-      if (!name || typeof name !== 'string' || name.length < 3) {
-         res.status(400).json({
-            message: 'Name must be at least 3 characters long',
-         });
-         return;
-      }
+      const { email } = req.body;
+      // if (!name || typeof name !== 'string' || name.length < 3) {
+      //    res.status(400).json({
+      //       message: 'Name must be at least 3 characters long',
+      //    });
+      //    return;
+      // }
 
       if (!email || !validateEmail(email)) {
          res.status(400).json({
@@ -34,10 +34,10 @@ export const CollectDetails = async (req: Request, res: Response) => {
 
       const newUser = new UserModel({
          waitlistId: count,
-         name: name.trim(),
+         // name: name.trim(),
          email: email.toLowerCase(),
-         interest: interest,
-         phonenumber: phonenumber,
+         // interest: interest,
+         // phonenumber: phonenumber,
          joinedAt: new Date(),
       });
 
@@ -47,7 +47,7 @@ export const CollectDetails = async (req: Request, res: Response) => {
          message: 'Successfully added to waitlist',
          user: {
             waitlistId: count + 1,
-            name: newUser.name,
+            // name: newUser.name,
             email: newUser.email,
          },
       });

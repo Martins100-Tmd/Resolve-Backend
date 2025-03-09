@@ -5,10 +5,11 @@ import express, { Application } from 'express';
 import type { Response, Request } from 'express';
 import admin from './src/router/admin.router';
 import cookieParser from 'cookie-parser';
+import * as cors from 'cors';
 
-const PORT = 3000;
 const app: Application = express();
 
+app.use(cors.default({ origin: '*' }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -23,7 +24,7 @@ app.get('/', (req: Request, res: Response) => {
 
 connectDB()
    .then(() => {
-      app.listen(3000, () => {
+      app.listen(3001, () => {
          console.log('Server running on port 3000');
       });
    })
