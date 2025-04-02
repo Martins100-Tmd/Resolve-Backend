@@ -25,7 +25,7 @@ app.get('/', (req: Request, res: Response) => {
 connectDB()
    .then(() => {
       app.listen(3001, () => {
-         console.log('Server running on port 3000');
+         console.log('Server running on port 3001');
       });
    })
    .catch((error) => {

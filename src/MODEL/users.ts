@@ -4,10 +4,10 @@ import { Schema, model } from 'mongoose';
 interface users {
    _id?: ObjectId;
    waitlistId?: Number;
-   //name: string,
+   name: string;
    email: string;
-   //interest: string,
-   //phonenumber: number,
+   interest: string;
+   phonenumber: number;
    joinedAt?: Date;
 }
 
@@ -15,13 +15,13 @@ const userschema = new Schema<users>({
    waitlistId: {
       type: Number,
    },
-   // name: {
-   //     type: String,
-   //     required: true,
-   //     trim: true,
-   //     minlength: 3,
-   //     maxlength: 100
-   // },
+   name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 3,
+      maxlength: 100,
+   },
    email: {
       type: String,
       required: true,
@@ -29,15 +29,14 @@ const userschema = new Schema<users>({
       lowercase: true,
       trim: true,
    },
-   // interest: {
-   //     type: String,
-   //     required: true,
-   // },
-   // phonenumber: {
-   //     type: Number,
-   //     required: true
-   // },
-
+   interest: {
+      type: String,
+      required: true,
+   },
+   phonenumber: {
+      type: Number,
+      required: true,
+   },
    joinedAt: {
       type: Date,
       default: Date.now,
